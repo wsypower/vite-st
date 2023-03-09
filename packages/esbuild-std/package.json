@@ -1,5 +1,6 @@
 {
   "name": "esbuild-std",
+  "type": "module",
   "version": "1.0.0",
   "description": "",
   "author": "",
@@ -7,7 +8,7 @@
   "keywords": [],
   "main": "index.js",
   "scripts": {
-    "build": "esbuild src/index.ts --bundle --outfile=dist/out.js"
+    "build": "ts-node-esm script/build"
   },
   "dependencies": {
     "esbuild": "^0.17.11",
