@@ -1,6 +1,5 @@
 {
   "name": "esbuild-basic",
-  "type": "module",
   "version": "1.0.0",
   "description": "",
   "author": "",
@@ -8,7 +7,9 @@
   "keywords": [],
   "main": "index.js",
   "scripts": {
-    "build": "ts-node-esm script/build"
+    "build": "ts-node-esm script/build",
+    "dev": "ts-node-esm script/serve",
+    "transfrom": "ts-node-esm script/transform"
   },
   "dependencies": {
     "esbuild": "^0.17.11",

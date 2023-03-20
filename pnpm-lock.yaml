@@ -20,6 +20,18 @@ importers:
       typescript: 4.9.5
       vite: 4.1.4_@types+node@18.14.6
 
+  packages/esbuild-basic:
+    specifiers:
+      esbuild: ^0.17.11
+      react: ^18.2.0
+      react-dom: ^18.2.0
+      vue: ^3.2.47
+    dependencies:
+      esbuild: 0.17.11
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+      vue: 3.2.47
+
   packages/esbuild-std:
     specifiers:
       esbuild: ^0.17.11

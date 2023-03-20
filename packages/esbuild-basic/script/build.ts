@@ -2,7 +2,7 @@
  * @Description:
  * @Author: wsy
  * @Date: 2023-03-09 13:14:04
- * @LastEditTime: 2023-03-09 14:48:51
+ * @LastEditTime: 2023-03-13 15:05:30
  * @LastEditors: wsy
  */
 import path from 'node:path'
@@ -21,6 +21,8 @@ async function runBuild() {
     absWorkingDir: root,
     // 入口文件列表，为一个数组
     entryPoints: [path.join(root, './src/index.ts')],
+    entryNames: '[dir]/src/[name]-[hash]',
+    target: ['es2015'],
     // 打包产物目录
     outdir: 'dist',
     // 是否需要打包，一般设为 true
@@ -46,6 +48,9 @@ async function runBuild() {
     // 针对一些特殊的文件，调用不同的 loader 进行加载
     loader: {
       '.png': 'base64',
+    },
+    banner: {
+      js: '// 这是一个测试banner',
     },
   })
   // eslint-disable-next-line no-console
