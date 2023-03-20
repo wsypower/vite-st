@@ -2,16 +2,13 @@
  * @Description:
  * @Author: wsy
  * @Date: 2023-03-09 13:14:04
- * @LastEditTime: 2023-03-13 15:05:30
+ * @LastEditTime: 2023-03-20 12:53:15
  * @LastEditors: wsy
  */
 import path from 'node:path'
-import { fileURLToPath } from 'node:url'
 import { build } from 'esbuild'
 
-const dirname = path.dirname(fileURLToPath(import.meta.url))
-
-const root = path.join(dirname, '../')
+const root = path.join(__dirname, '../')
 
 async function runBuild() {
   const result = await build({
