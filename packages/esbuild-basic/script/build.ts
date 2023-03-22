@@ -2,13 +2,32 @@
  * @Description:
  * @Author: wsy
  * @Date: 2023-03-09 13:14:04
- * @LastEditTime: 2023-03-20 12:53:15
+ * @LastEditTime: 2023-03-22 13:17:52
  * @LastEditors: wsy
  */
 import path from 'node:path'
-import { build } from 'esbuild'
+import { type Plugin, build } from 'esbuild'
 
 const root = path.join(__dirname, '../')
+
+const envPlugin: Plugin = {
+  name: 'env',
+  setup(build) {
+    build.onResolve({ filter: /^vue$/ }, (args) => {
+      return {
+        path: args.path,
+        namespace: 'env-ns',
+      }
+    })
+
+    build.onLoad({ filter: /.*/, namespace: 'env-ns' }, () => {
+      return {
+        contents: JSON.stringify({ PATH: 1 }),
+        loader: 'json',
+      }
+    })
+  },
+}
 
 async function runBuild() {
   const result = await build({
@@ -49,6 +68,7 @@ async function runBuild() {
     banner: {
       js: '// 这是一个测试banner',
     },
+    plugins: [envPlugin],
   })
   // eslint-disable-next-line no-console
   console.log(result)
