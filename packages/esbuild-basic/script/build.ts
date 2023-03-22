@@ -2,12 +2,12 @@
  * @Description:
  * @Author: wsy
  * @Date: 2023-03-09 13:14:04
- * @LastEditTime: 2023-03-22 13:17:52
+ * @LastEditTime: 2023-03-22 13:20:42
  * @LastEditors: wsy
  */
 import path from 'node:path'
 import { type Plugin, build } from 'esbuild'
-
+import htmlPlugin from './htmlPlugins'
 const root = path.join(__dirname, '../')
 
 const envPlugin: Plugin = {
@@ -68,7 +68,7 @@ async function runBuild() {
     banner: {
       js: '// 这是一个测试banner',
     },
-    plugins: [envPlugin],
+    plugins: [envPlugin, htmlPlugin],
   })
   // eslint-disable-next-line no-console
   console.log(result)
